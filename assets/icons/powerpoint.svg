@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<rect x="10" y="10" width="44" height="44" rx="10" fill="#D24726"/>
+<rect x="17" y="19" width="18" height="28" rx="3" fill="#B53A1D"/>
+<circle cx="40" cy="27" r="9" fill="#fff" opacity=".88"/>
+<path d="M40 18a9 9 0 0 1 9 9h-9z" fill="#F5B6A3"/>
+<text x="26" y="39" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#fff">P</text>
+</svg>
