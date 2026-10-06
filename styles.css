@@ -130,8 +130,29 @@ html[dir="rtl"] .hero:before{
 .role-line{margin-top:6px;color:var(--muted);font-size:13px}
 
 .hero h1.hero-title-inline{
-  font-size:clamp(42px,4.4vw,64px);line-height:1.18;letter-spacing:-.02em;
-  margin:18px 0 22px;max-width:960px;font-weight:700;
+  font-size:clamp(26px,2.5vw,44px);
+  line-height:1.16;
+  letter-spacing:-.02em;
+  margin:18px 0 22px;
+  max-width:980px;
+  font-weight:700;
+}
+
+.hero-dark,
+.hero-gradient{
+  display:block;
+}
+
+.hero-dark{
+  white-space:nowrap;
+}
+
+.hero-gradient{
+  white-space:nowrap;
+  background:linear-gradient(90deg,#2563eb,#22c1dc,#7c3aed);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 .hero h1.hero-title-inline .accent{
   display:inline;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--violet));
@@ -330,8 +351,16 @@ html[lang="en"] .expertise-card{text-align:left}
     radial-gradient(circle at 82% 22%,rgba(113,54,220,.10),transparent 26%);
   filter:blur(10px);
 }
-.contact-simple{position:relative;z-index:1;display:grid;grid-template-columns:.55fr 1.45fr;gap:54px;align-items:start}
-.contact-kicker{color:#8ae9f0;margin-bottom:8px}
+
+
+.contact-simple{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:.68fr 1.25fr;
+  gap:20px;
+  align-items:center;
+}.contact-kicker{color:#8ae9f0;margin-bottom:8px}
 .contact-title-wrap h2{font-size:clamp(50px,6vw,82px);line-height:1.08;margin:0;max-width:560px;color:#fff}
 .contact-list{display:grid;gap:12px}
 .contact-list a{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.11);transition:opacity .2s ease}
@@ -340,7 +369,25 @@ html[lang="en"] .expertise-card{text-align:left}
 .contact-list small{display:block;color:rgba(255,255,255,.48);font-size:11px;margin-bottom:3px}
 .contact-list strong{font-size:17px;font-weight:700;direction:ltr;unicode-bidi:isolate}
 .footer{padding:24px 0 0;color:rgba(255,255,255,.48);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;position:relative;z-index:1;margin-top:18px}
+.contact-section .contact-title-wrap{
+  width:60%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
+.contact-section .contact-title-wrap h2{
+  margin:0;
+  text-align:center;
+  display:inline-block;
+  background:linear-gradient(90deg,#0630eae9,#501ea6) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:transparent !important;
+}
 /* 11. Project detail pages ----------------------------------------------------------*/
 .project-hero{padding:72px 0 42px}
 .project-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
@@ -593,3 +640,1078 @@ body > *{position:relative;z-index:auto !important}
     border-radius:16px;
   }
 }
+
+
+/* ===== FINAL PORTFOLIO REFINEMENTS ===== */
+html,body{max-width:100%;overflow-x:hidden}
+main{width:100%;overflow:hidden}
+
+/* Hero ID card — same position, badge-inspired motion */
+.id-card-shell{
+  position:relative;min-height:520px;padding:82px 30px 28px;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:transparent;border:0;box-shadow:none;backdrop-filter:none;
+  perspective:1200px;overflow:visible;
+}
+.lanyard{position:absolute;inset:0 0 auto;height:170px;pointer-events:none;z-index:1}
+.lanyard-left,.lanyard-right{
+  position:absolute;top:-18px;width:18px;height:190px;border-radius:14px;
+  background:#6d45b8;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 8px 24px rgba(63,38,112,.13);
+}
+.lanyard-left{left:42%;transform:rotate(-19deg);transform-origin:top center}
+.lanyard-right{right:42%;transform:rotate(19deg);transform-origin:top center}
+.lanyard-clip{
+  position:absolute;left:50%;bottom:-8px;width:36px;height:46px;transform:translateX(-50%);
+  border:7px solid #e7eaf0;border-radius:11px 11px 15px 15px;background:#fff;
+  box-shadow:0 8px 18px rgba(30,39,64,.12);
+}
+.identity-card{
+  position:relative;z-index:2;width:min(100%,420px);min-height:380px;padding:0 26px 26px;
+  border-radius:26px;background:rgba(255,255,255,.94);border:1px solid rgba(218,225,238,.95);
+  box-shadow:0 30px 68px rgba(20,37,75,.14);overflow:hidden;
+  transform-style:preserve-3d;will-change:transform;
+  transition:transform .2s ease,box-shadow .25s ease;
+}
+.id-card-shell:hover .identity-card{box-shadow:0 36px 80px rgba(36,33,91,.18)}
+.identity-strip{height:58px;margin:0 -26px 22px;background:#7048ba}
+.identity-logo-wrap{
+  width:190px;height:190px;margin:0 auto 13px;border-radius:24px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#fff,#f6f8fd);border:1px solid var(--line);overflow:hidden;
+}
+.identity-logo-wrap img{width:92%;height:92%;object-fit:contain}
+.identity-name{text-align:center;font-size:20px;font-weight:800;color:var(--ink);margin-top:2px}
+.identity-role{text-align:center;color:var(--muted);font-size:12px;margin-top:4px}
+.id-card-shell .hero-tags{justify-content:center;margin-top:18px;padding:0}
+.id-card-shell .chip{background:#fff;font-size:11px;padding:7px 10px}
+
+/* About — clean copy only + typing cursor */
+.about-section{min-height:460px;display:flex;align-items:center}
+.about-copy{max-width:1020px;margin-bottom:0}
+.about-copy p{max-width:980px;font-size:17px;line-height:2.05;min-height:8.2em}
+.typewriter-copy::after{content:"";display:inline-block;width:2px;height:1.15em;margin-inline-start:4px;background:var(--violet);vertical-align:-.18em;animation:typingBlink .8s steps(1) infinite}
+.typewriter-copy.typing-done::after{animation-duration:1.2s;opacity:.55}
+@keyframes typingBlink{50%{opacity:0}}
+
+/* Experience — expanded content with preserved visual language */
+.responsibilities-title{font-size:13px;font-weight:800;color:var(--ink);margin:22px 0 6px}
+.exp-top h3{font-size:21px;max-width:760px;line-height:1.55}
+.exp-label{font-size:13px}
+.exp-row{grid-template-columns:40px 1fr;padding:16px 0}
+.exp-row p{font-size:14.5px;line-height:1.85}
+
+/* Skills — one consistent set in both languages */
+.skills-section{width:100%;max-width:100%;overflow:hidden}
+.skills-section .simple-section-title{margin-bottom:34px}
+.skills-section .simple-section-title h2{font-size:clamp(34px,4vw,52px)}
+.technical-skills-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;max-width:1120px}
+.technical-skill-card{min-width:0;min-height:108px;padding:15px 12px}
+.technical-skill-card img{width:30px;height:30px;flex-basis:30px}
+.technical-skill-card span{font-size:11.5px;line-height:1.45;max-width:210px}
+
+/* Contact — soft transition into the dark footer, no hard horizontal cut */
+.contact-section{
+  margin-top:-1px;padding:170px 0 30px;
+  background:linear-gradient(180deg,
+    rgba(247,249,253,0) 0%,
+    rgba(223,219,246,.22) 10%,
+    rgba(78,71,120,.34) 24%,
+    rgba(17,27,47,.86) 42%,
+    #070b12 58%,
+    #070b12 100%);
+}
+.contact-section:before{
+  background:
+    radial-gradient(circle at 18% 42%,rgba(38,207,228,.15),transparent 30%),
+    radial-gradient(circle at 80% 31%,rgba(113,54,220,.17),transparent 31%);
+  filter:blur(18px);
+}
+
+@media(max-width:980px){
+  .technical-skills-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .id-card-shell{min-height:500px;max-width:540px;margin:0 auto;width:100%}
+  .contact-section{padding-top:145px}
+}
+@media(max-width:680px){
+  .hero-card.id-card-shell{display:flex;min-height:430px;padding:68px 14px 14px;margin-top:18px}
+  .identity-card{min-height:330px;padding:0 18px 20px;border-radius:22px}
+  .identity-strip{height:48px;margin:0 -18px 18px}
+  .identity-logo-wrap{width:155px;height:155px}
+  .lanyard-left,.lanyard-right{height:150px;width:15px}
+  .lanyard-left{left:39%}.lanyard-right{right:39%}
+  .technical-skills-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .technical-skill-card{min-height:100px}
+  .about-copy p{font-size:15px;line-height:1.95;min-height:13em}
+  .experience-card{padding:20px}
+  .exp-top h3{font-size:18px}
+  .contact-section{padding-top:125px}
+}
+
+
+/* ===== FINAL VISUAL POLISH — glass badge, visible typing, blended contact ===== */
+
+/* Glass ID badge */
+.id-card-shell{
+  min-height:540px;
+  padding-top:92px;
+}
+.identity-card{
+  width:min(100%,430px);
+  min-height:385px;
+  padding:0 26px 26px;
+  border-radius:28px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.68),rgba(255,255,255,.36)),
+    radial-gradient(circle at 12% 8%,rgba(255,255,255,.82),transparent 32%);
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:
+    0 32px 72px rgba(28,39,84,.16),
+    inset 0 1px 0 rgba(255,255,255,.92),
+    inset 0 -1px 0 rgba(174,185,214,.22);
+  -webkit-backdrop-filter:blur(22px) saturate(145%);
+  backdrop-filter:blur(22px) saturate(145%);
+}
+.identity-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.34),transparent 24%,transparent 68%,rgba(255,255,255,.16)),
+    radial-gradient(circle at 82% 12%,rgba(123,84,214,.10),transparent 28%);
+}
+.identity-card > *{position:relative;z-index:1}
+.identity-strip{
+  height:60px;
+  margin:0 -26px 22px;
+  background:
+    linear-gradient(180deg,#7a50ca 0%,#6840b5 55%,#7047bf 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    inset 0 -5px 12px rgba(48,25,104,.13);
+}
+.identity-logo-wrap{
+  background:rgba(255,255,255,.54);
+  border:1px solid rgba(205,214,235,.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 12px 30px rgba(31,45,88,.08);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+.id-card-shell .chip{
+  background:rgba(255,255,255,.58);
+  border-color:rgba(193,204,229,.72);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+
+/* Realistic fabric lanyard */
+.lanyard{
+  height:196px;
+  z-index:1;
+  filter:drop-shadow(0 13px 16px rgba(56,37,103,.14));
+}
+.lanyard-left,.lanyard-right{
+  top:-34px;
+  width:26px;
+  height:222px;
+  border-radius:8px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.14),transparent 18%,transparent 78%,rgba(38,18,81,.22)),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,rgba(62,31,122,.025) 2px 4px),
+    linear-gradient(180deg,#7b52ca,#6540b2 58%,#7448c0);
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,.14),
+    inset -1px 0 0 rgba(38,18,81,.20);
+}
+.lanyard-left{left:42%;transform:rotate(-18deg);transform-origin:top center}
+.lanyard-right{right:42%;transform:rotate(18deg);transform-origin:top center}
+.lanyard-clip{
+  bottom:-18px;
+  width:42px;
+  height:56px;
+  border:0;
+  border-radius:8px 8px 15px 15px;
+  background:
+    linear-gradient(90deg,#cdd2db 0%,#f8fafc 22%,#d9dee7 50%,#fff 72%,#c5cad4 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(127,137,156,.28),
+    0 9px 18px rgba(27,36,64,.16);
+}
+.lanyard-clip::before{
+  content:"";
+  position:absolute;
+  left:50%;top:9px;
+  width:18px;height:12px;
+  transform:translateX(-50%);
+  border-radius:4px;
+  background:#b4bbc7;
+  box-shadow:inset 0 2px 3px rgba(72,82,102,.18);
+}
+.lanyard-clip::after{
+  content:"";
+  position:absolute;
+  left:50%;bottom:-19px;
+  width:17px;height:23px;
+  transform:translateX(-50%);
+  border:4px solid #d8dde6;
+  border-top:0;
+  border-radius:0 0 11px 11px;
+}
+
+/* More obvious ChatGPT-like typing */
+.typewriter-copy{
+  white-space:pre-wrap;
+}
+.typewriter-copy::after{
+  width:2px;
+  height:1.16em;
+  margin-inline-start:5px;
+  background:#7c4dff;
+  border-radius:2px;
+  animation:typingBlink .72s steps(1,end) infinite;
+}
+.typewriter-copy.is-typing::after{
+  opacity:1;
+}
+.typewriter-copy.typing-done::after{
+  opacity:.52;
+}
+
+/* Arabic page: skills intentionally remain in English, matching EN page exactly. */
+html[dir="rtl"] .technical-skill-card span{
+  direction:ltr;
+  unicode-bidi:plaintext;
+  text-align:center;
+}
+
+/* Contact: blend the light page into the dark section without a blank transition band. */
+.contact-section{
+  margin-top:0;
+  padding:118px 0 30px;
+  background:
+    radial-gradient(ellipse at 8% 2%,rgba(89,214,231,.20) 0%,rgba(89,214,231,.08) 24%,transparent 46%),
+    radial-gradient(ellipse at 78% 1%,rgba(124,78,216,.25) 0%,rgba(124,78,216,.10) 25%,transparent 48%),
+    linear-gradient(180deg,
+      rgba(239,245,252,.04) 0%,
+      rgba(174,183,217,.24) 10%,
+      rgba(70,72,118,.52) 22%,
+      rgba(21,28,50,.90) 36%,
+      #090d16 49%,
+      #070b12 100%);
+}
+.contact-section::before{
+  inset:0;
+  background:
+    radial-gradient(circle at 16% 26%,rgba(39,208,226,.17),transparent 31%),
+    radial-gradient(circle at 75% 21%,rgba(123,66,221,.20),transparent 33%);
+  filter:blur(24px);
+  opacity:1;
+}
+
+@media(max-width:680px){
+  .id-card-shell{min-height:455px;padding-top:76px}
+  .identity-card{min-height:342px}
+  .identity-strip{height:50px}
+  .lanyard{height:170px}
+  .lanyard-left,.lanyard-right{height:176px;width:20px}
+  .contact-section{padding-top:92px}
+}
+
+
+/* ===== FINAL POLISH 2 — straight realistic lanyard + seamless page/contact blend ===== */
+
+/* Replace the X-shaped lanyard with a straight real strap coming from above */
+.id-card-shell{
+  padding-top:118px;
+}
+
+.lanyard{
+  position:absolute;
+  left:50%;
+  top:-78px;
+  width:88px;
+  height:210px;
+  transform:translateX(-50%);
+  z-index:1;
+  filter:drop-shadow(0 14px 18px rgba(47,31,91,.15));
+}
+
+.lanyard-left,
+.lanyard-right{
+  position:absolute;
+  top:0;
+  width:28px;
+  height:176px;
+  border-radius:10px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.16),transparent 16%,transparent 80%,rgba(40,21,83,.20)),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 2px,rgba(53,30,105,.02) 2px 4px),
+    linear-gradient(180deg,#7b52ca 0%,#7149bf 46%,#6540ad 100%);
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,.16),
+    inset -1px 0 0 rgba(44,22,89,.18);
+  transform:none !important;
+}
+
+.lanyard-left{ left:13px; }
+.lanyard-right{ right:13px; }
+
+.lanyard::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:154px;
+  width:56px;
+  height:24px;
+  transform:translateX(-50%);
+  border-radius:10px;
+  background:
+    linear-gradient(180deg,#8058ce,#6944b6);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 5px 10px rgba(53,33,103,.12);
+}
+
+.lanyard-clip{
+  position:absolute;
+  left:50%;
+  bottom:-20px;
+  transform:translateX(-50%);
+  width:44px;
+  height:58px;
+  border-radius:9px 9px 14px 14px;
+  background:
+    linear-gradient(90deg,#c5cbd4 0%,#f8fafc 24%,#d7dce5 51%,#fff 74%,#c1c7d1 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(127,137,156,.28),
+    0 9px 18px rgba(27,36,64,.15);
+}
+
+.identity-card{
+  z-index:2;
+}
+
+/* Seamless transition from the light page background into contact section */
+body{
+  background:
+    radial-gradient(circle at 12% 16%, rgba(188,223,244,.26), transparent 34%),
+    radial-gradient(circle at 84% 18%, rgba(209,193,246,.23), transparent 34%),
+    linear-gradient(180deg,#f8fbff 0%,#f6f9fe 58%,#f2f5fb 76%,#eef2f8 100%);
+}
+
+.contact-section{
+  position:relative;
+  margin-top:-1px;
+  padding-top:126px;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(80,200,224,.18) 0%, rgba(80,200,224,.08) 26%, transparent 48%),
+    radial-gradient(ellipse at 78% 8%, rgba(122,78,216,.20) 0%, rgba(122,78,216,.09) 28%, transparent 50%),
+    linear-gradient(180deg,
+      rgba(238,243,249,1) 0%,
+      rgba(220,225,237,.98) 7%,
+      rgba(186,191,214,.94) 15%,
+      rgba(142,145,176,.90) 23%,
+      rgba(91,94,126,.88) 31%,
+      rgba(45,49,73,.95) 40%,
+      rgba(17,22,35,.99) 50%,
+      #090d16 62%,
+      #070b12 100%);
+}
+
+.contact-section::before{
+  content:"";
+  position:absolute;
+  inset:-120px 0 auto 0;
+  height:220px;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,
+      rgba(239,243,249,0) 0%,
+      rgba(230,234,243,.52) 28%,
+      rgba(195,200,220,.72) 52%,
+      rgba(129,133,163,.54) 70%,
+      rgba(65,69,95,.30) 86%,
+      rgba(18,23,36,0) 100%);
+  filter:blur(18px);
+  opacity:1;
+}
+
+.contact-section > .container{
+  position:relative;
+  z-index:2;
+}
+
+/* Remove harsh section edge caused by previous top overlays */
+.contact-section::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:1px;
+  background:transparent;
+}
+
+@media(max-width:680px){
+  .id-card-shell{
+    padding-top:98px;
+  }
+  .lanyard{
+    top:-66px;
+    width:72px;
+    height:178px;
+  }
+  .lanyard-left,
+  .lanyard-right{
+    width:23px;
+    height:150px;
+  }
+  .lanyard-left{left:11px}
+  .lanyard-right{right:11px}
+  .lanyard::before{
+    top:132px;
+    width:48px;
+    height:21px;
+  }
+  .contact-section{
+    padding-top:104px;
+  }
+}
+
+
+/* ===== GLASS FINAL — no lanyard, glass ID card + glass contact ===== */
+
+/* Remove lanyard completely */
+.lanyard,
+.lanyard-left,
+.lanyard-right,
+.lanyard-clip{
+  display:none !important;
+}
+
+.id-card-shell{
+  padding-top:28px !important;
+  min-height:500px;
+}
+
+/* Strong glassmorphism identity card inspired by the reference */
+.identity-card{
+  position:relative;
+  overflow:hidden;
+  width:min(100%,430px);
+  min-height:390px;
+  padding:28px 26px 28px;
+  border-radius:34px;
+  background:
+    linear-gradient(135deg,
+      rgba(205,177,255,.30) 0%,
+      rgba(176,208,255,.24) 36%,
+      rgba(105,218,240,.22) 100%);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:
+    0 24px 60px rgba(70,78,143,.18),
+    0 0 0 1px rgba(117,228,255,.18),
+    inset 1px 1px 0 rgba(255,255,255,.92),
+    inset -1px -1px 0 rgba(91,202,235,.24);
+  -webkit-backdrop-filter:blur(30px) saturate(165%);
+  backdrop-filter:blur(30px) saturate(165%);
+}
+
+.identity-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 4% 8%, rgba(255,155,236,.28), transparent 25%),
+    radial-gradient(circle at 96% 10%, rgba(71,239,255,.30), transparent 28%),
+    linear-gradient(120deg, rgba(255,255,255,.30), transparent 34%, transparent 68%, rgba(255,255,255,.12));
+}
+
+.identity-card::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:32px;
+  pointer-events:none;
+  box-shadow:
+    inset 0 0 24px rgba(255,255,255,.22),
+    inset 0 0 18px rgba(85,220,255,.10);
+}
+
+/* Remove former top strip entirely */
+.identity-strip{
+  display:none !important;
+}
+
+.identity-logo-wrap{
+  margin-top:2px;
+  background:rgba(255,255,255,.33);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:
+    0 12px 28px rgba(45,59,111,.10),
+    inset 1px 1px 0 rgba(255,255,255,.85);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+}
+
+.id-card-shell .chip{
+  background:rgba(255,255,255,.32);
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.72),
+    0 7px 18px rgba(54,66,116,.07);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+}
+
+/* Contact section: keep the page/background blend, but make the actual contact block glass */
+.contact-section{
+  position:relative;
+  overflow:hidden;
+  padding-top:118px;
+  background:
+    radial-gradient(circle at 12% 24%,rgba(78,214,235,.22),transparent 34%),
+    radial-gradient(circle at 82% 18%,rgba(141,88,231,.24),transparent 36%),
+    linear-gradient(180deg,
+      #eef3f9 0%,
+      #dfe5f0 10%,
+      #b9c1d4 22%,
+      #7e879f 34%,
+      #394151 48%,
+      #161c28 62%,
+      #0b1019 78%,
+      #080c13 100%);
+}
+
+.contact-section::before{
+  content:"";
+  position:absolute;
+  inset:-90px 0 auto 0;
+  height:210px;
+  background:
+    linear-gradient(180deg,
+      rgba(239,244,250,0) 0%,
+      rgba(231,236,245,.58) 30%,
+      rgba(188,196,216,.60) 55%,
+      rgba(111,120,148,.34) 78%,
+      rgba(33,39,56,0) 100%);
+  filter:blur(22px);
+  pointer-events:none;
+}
+
+.contact-simple{
+  position:relative;
+  overflow:hidden;
+  border-radius:34px;
+  padding:54px 58px;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.14),
+      rgba(180,194,235,.10) 42%,
+      rgba(129,91,220,.10) 100%);
+  border:1px solid rgba(255,255,255,.20);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.22),
+    inset 1px 1px 0 rgba(255,255,255,.20),
+    inset -1px -1px 0 rgba(102,216,239,.10);
+  -webkit-backdrop-filter:blur(26px) saturate(150%);
+  backdrop-filter:blur(26px) saturate(150%);
+}
+
+.contact-simple::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 4% 10%,rgba(71,223,241,.15),transparent 28%),
+    radial-gradient(circle at 94% 8%,rgba(141,79,236,.18),transparent 30%),
+    linear-gradient(120deg,rgba(255,255,255,.08),transparent 34%);
+}
+
+.contact-simple > *{
+  position:relative;
+  z-index:1;
+}
+
+.contact-list a{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  padding:16px 18px;
+  transition:transform .25s ease, background .25s ease, border-color .25s ease;
+}
+
+.contact-list a:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.075);
+  border-color:rgba(119,222,241,.20);
+}
+
+.contact-icon{
+  background:
+    linear-gradient(135deg,rgba(116,91,220,.22),rgba(75,214,232,.18));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.12);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+
+@media(max-width:680px){
+  .id-card-shell{
+    padding-top:18px !important;
+    min-height:430px;
+  }
+
+  .identity-card{
+    border-radius:28px;
+    padding:24px 20px;
+    min-height:350px;
+  }
+
+  .contact-simple{
+    border-radius:26px;
+    padding:34px 20px;
+  }
+
+  .contact-section{
+    padding-top:90px;
+  }
+}
+
+
+/* ===== ULTRA GLASS LIGHT — final refinement ===== */
+
+/* Same light page background through contact */
+.contact-section{
+  position:relative !important;
+  overflow:hidden;
+  margin-top:0 !important;
+  padding-top:110px !important;
+  padding-bottom:56px !important;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(148,222,246,.30) 0%, rgba(148,222,246,.12) 28%, transparent 48%),
+    radial-gradient(circle at 82% 16%, rgba(190,159,246,.28) 0%, rgba(190,159,246,.12) 30%, transparent 50%),
+    linear-gradient(180deg,#f5f9fe 0%,#f3f7fd 46%,#f2f6fc 100%) !important;
+}
+.contact-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(76,222,244,.17),transparent 30%),
+    radial-gradient(circle at 88% 10%,rgba(151,98,235,.17),transparent 32%);
+  filter:blur(28px);
+}
+.contact-section::after{display:none !important;}
+
+/* Strong crystal glass contact panel */
+.contact-simple{
+  position:relative;
+  overflow:hidden;
+  border-radius:38px !important;
+  padding:58px 62px !important;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.28) 0%,
+      rgba(205,227,255,.18) 30%,
+      rgba(198,174,255,.17) 60%,
+      rgba(118,226,244,.13) 100%) !important;
+  border:1px solid rgba(255,255,255,.90) !important;
+  box-shadow:
+    0 30px 74px rgba(83,98,145,.14),
+    0 0 0 1px rgba(100,220,255,.16),
+    inset 2px 2px 1px rgba(255,255,255,.96),
+    inset -2px -2px 1px rgba(112,183,232,.18),
+    inset 0 0 34px rgba(255,255,255,.15) !important;
+  -webkit-backdrop-filter:blur(36px) saturate(190%) !important;
+  backdrop-filter:blur(36px) saturate(190%) !important;
+}
+.contact-simple::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,
+      rgba(255,255,255,.70) 0%,
+      rgba(255,255,255,.20) 13%,
+      transparent 31%,
+      transparent 64%,
+      rgba(255,255,255,.13) 80%,
+      rgba(255,255,255,.38) 100%),
+    radial-gradient(circle at 7% 8%,rgba(102,224,255,.30),transparent 26%),
+    radial-gradient(circle at 92% 12%,rgba(204,145,255,.28),transparent 29%);
+  mix-blend-mode:screen;
+}
+.contact-simple::after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:31px;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.38);
+  box-shadow:
+    inset 0 0 28px rgba(255,255,255,.20),
+    0 0 22px rgba(87,214,241,.08);
+}
+.contact-simple > *{position:relative;z-index:1}
+
+/* Light contact text */
+.contact-section,
+.contact-section h2,
+.contact-section .contact-kicker,
+.contact-section .contact-label,
+.contact-section .contact-value,
+.contact-section a,
+.contact-section p{
+  color:#0b1732 !important;
+}
+.contact-section .contact-kicker{color:#2c78c8 !important;}
+.contact-section .contact-label{color:#73809b !important;}
+.contact-section .contact-icon{
+  color:#14315f !important;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.50),rgba(188,219,255,.30),rgba(201,175,255,.26)) !important;
+  border:1px solid rgba(255,255,255,.74) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.86),
+    0 8px 18px rgba(77,96,144,.10) !important;
+}
+.contact-list a{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.27),rgba(255,255,255,.13)) !important;
+  border:1px solid rgba(255,255,255,.64) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.76),
+    0 10px 26px rgba(72,89,132,.07) !important;
+  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
+}
+.contact-list a:hover{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.38),rgba(202,225,255,.20)) !important;
+  border-color:rgba(116,211,239,.50) !important;
+}
+
+/* Keep footer light; remove any black band */
+.footer,.site-footer{
+  background:#f2f6fc !important;
+  color:#66738d !important;
+  border-top:1px solid rgba(159,174,205,.18) !important;
+}
+.footer *,.site-footer *{color:inherit !important;}
+
+/* Ultra glass HA card */
+.identity-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:40px !important;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.33) 0%,
+      rgba(202,187,255,.24) 31%,
+      rgba(167,218,255,.22) 62%,
+      rgba(110,226,243,.20) 100%) !important;
+  border:1px solid rgba(255,255,255,.92) !important;
+  box-shadow:
+    0 34px 76px rgba(72,87,139,.16),
+    0 0 0 1px rgba(104,221,255,.18),
+    inset 3px 3px 2px rgba(255,255,255,.96),
+    inset -3px -3px 2px rgba(102,186,236,.17),
+    inset 0 0 38px rgba(255,255,255,.20) !important;
+  -webkit-backdrop-filter:blur(40px) saturate(195%) !important;
+  backdrop-filter:blur(40px) saturate(195%) !important;
+}
+.identity-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,
+      rgba(255,255,255,.76) 0%,
+      rgba(255,255,255,.20) 14%,
+      transparent 34%,
+      transparent 64%,
+      rgba(255,255,255,.14) 82%,
+      rgba(255,255,255,.42) 100%),
+    radial-gradient(circle at 6% 8%,rgba(211,151,255,.28),transparent 27%),
+    radial-gradient(circle at 94% 9%,rgba(75,231,255,.33),transparent 28%);
+  mix-blend-mode:screen;
+}
+.identity-card::after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:32px;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.40);
+  box-shadow:
+    inset 0 0 30px rgba(255,255,255,.18),
+    0 0 18px rgba(82,216,241,.08);
+}
+
+/* Circular HA crop */
+.identity-logo-wrap{
+  width:190px !important;
+  height:190px !important;
+  border-radius:50% !important;
+  overflow:hidden !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.46),rgba(190,220,255,.22),rgba(200,170,255,.20)) !important;
+  border:1px solid rgba(255,255,255,.88) !important;
+  box-shadow:
+    0 16px 34px rgba(60,75,123,.11),
+    inset 2px 2px 1px rgba(255,255,255,.92),
+    inset -2px -2px 1px rgba(103,197,238,.16) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(175%);
+  backdrop-filter:blur(22px) saturate(175%);
+}
+.identity-logo-wrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  border-radius:50% !important;
+  transform:scale(1.06);
+}
+
+.id-card-shell .chip{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.35),rgba(255,255,255,.18)) !important;
+  border:1px solid rgba(255,255,255,.76) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.86),
+    0 8px 18px rgba(77,92,140,.07) !important;
+}
+
+@media(max-width:680px){
+  .contact-simple{
+    padding:34px 20px !important;
+    border-radius:30px !important;
+  }
+  .identity-card{border-radius:32px !important;}
+  .identity-logo-wrap{
+    width:150px !important;
+    height:150px !important;
+  }
+}
+
+
+/* ===== ULTRA GLASS V3 — neutral outer background + larger HA card ===== */
+
+/* Contact outer area: same quiet light page background as the rest of the site.
+   Keep ALL color/glass effects only inside the contact glass card itself. */
+.contact-section{
+  background:
+    linear-gradient(180deg,#f7faff 0%,#f5f8fd 52%,#f3f7fc 100%) !important;
+}
+
+.contact-section::before{
+  display:none !important;
+}
+
+.contact-section::after{
+  display:none !important;
+}
+
+/* The glass contact card keeps its colored crystal treatment */
+.contact-simple{
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.28) 0%,
+      rgba(205,227,255,.18) 30%,
+      rgba(198,174,255,.17) 60%,
+      rgba(118,226,244,.13) 100%) !important;
+}
+
+/* Match footer to the same neutral background so there is no colored band outside the card */
+.footer,
+.site-footer{
+  background:#f3f7fc !important;
+}
+
+/* Slightly larger HA glass card */
+.id-card-shell{
+  min-height:540px !important;
+}
+
+.identity-card{
+  width:min(100%,500px) !important;
+  min-height:440px !important;
+  padding:34px 32px 32px !important;
+}
+
+.identity-logo-wrap{
+  width:210px !important;
+  height:210px !important;
+}
+
+.identity-card h3,
+.identity-card .identity-name{
+  margin-top:18px !important;
+}
+
+@media(max-width:680px){
+  .id-card-shell{
+    min-height:470px !important;
+  }
+
+  .identity-card{
+    width:min(100%,430px) !important;
+    min-height:390px !important;
+    padding:28px 22px 26px !important;
+  }
+
+  .identity-logo-wrap{
+    width:165px !important;
+    height:165px !important;
+  }
+}
+
+
+/* ===== FINAL V4 — seamless light background + larger whole HA card ===== */
+
+/* Match the contact OUTER background to the same light family used by the
+   certificates / light sections so no horizontal transition line is visible. */
+.contact-section{
+  margin-top:-1px !important;
+  padding-top:108px !important;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(205,231,247,.22), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(224,211,248,.20), transparent 35%),
+    linear-gradient(180deg,#f7faff 0%,#f7faff 100%) !important;
+  border-top:0 !important;
+  box-shadow:none !important;
+}
+.contact-section::before,
+.contact-section::after{
+  display:none !important;
+}
+
+/* Keep only the glass/colors INSIDE the contact card */
+.contact-simple{
+  margin-top:0 !important;
+}
+
+/* Remove the footer completely, including any residual layout space */
+.footer,
+.site-footer,
+footer{
+  display:none !important;
+}
+
+/* Enlarge the WHOLE HA card, not just the logo */
+.id-card-shell{
+  min-height:610px !important;
+  width:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding-top:28px !important;
+  padding-bottom:28px !important;
+}
+
+.identity-card{
+  width:min(100%,580px) !important;
+  min-height:500px !important;
+  padding:42px 42px 38px !important;
+  border-radius:44px !important;
+}
+
+.identity-logo-wrap{
+  width:220px !important;
+  height:220px !important;
+}
+
+.identity-card .chips,
+.identity-card .identity-chips{
+  margin-top:24px !important;
+  gap:12px !important;
+}
+
+.id-card-shell .chip{
+  padding:10px 16px !important;
+}
+
+/* Reduce any section-edge artifact between certificates and contact */
+.certificates-section{
+  border-bottom:0 !important;
+  margin-bottom:0 !important;
+}
+.certificates-section + .contact-section{
+  margin-top:-2px !important;
+}
+
+@media(max-width:900px){
+  .identity-card{
+    width:min(100%,520px) !important;
+    min-height:470px !important;
+    padding:38px 34px 34px !important;
+  }
+}
+
+@media(max-width:680px){
+  .id-card-shell{
+    min-height:500px !important;
+    padding-top:18px !important;
+    padding-bottom:18px !important;
+  }
+
+  .identity-card{
+    width:min(100%,450px) !important;
+    min-height:410px !important;
+    padding:30px 24px 28px !important;
+    border-radius:34px !important;
+  }
+
+  .identity-logo-wrap{
+    width:170px !important;
+    height:170px !important;
+  }
+
+  .contact-section{
+    padding-top:86px !important;
+  }
+}
+
+
+/* ===== V5 — gentle continuous HA card motion ===== */
+.identity-card{
+  animation:haCardDrift 7.5s ease-in-out infinite !important;
+  will-change:transform;
+}
+
+@keyframes haCardDrift{
+  0%,100%{
+    transform:translate3d(-10px,0,0) rotate(-0.25deg);
+  }
+  50%{
+    transform:translate3d(10px,-2px,0) rotate(0.25deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .identity-card{
+    animation:none !important;
+  }
+}
+
+
+/* Final portfolio refinements */
+.hero h1.hero-title-inline{max-width:880px;text-wrap:balance;}
+html[dir="rtl"] .hero h1.hero-title-inline{line-height:1.32;max-width:900px;}
+.about-copy h2{margin-bottom:20px;}
+.contact-section .contact-list small{color:#14315f !important;font-weight:700;}
+.project-tagline{font-weight:800;color:var(--blue);font-size:1.08em;margin-top:18px;}
