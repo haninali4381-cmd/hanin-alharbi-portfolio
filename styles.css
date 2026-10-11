@@ -482,7 +482,7 @@ html[lang="en"] .expertise-card{text-align:left}
 /* 11. Project detail pages ----------------------------------------------------------*/
 .project-hero{padding:72px 0 42px}
 .project-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.project-hero h1{font-size:clamp(46px,6vw,78px);line-height:1;margin:12px 0 18px}
+.project-hero h1{font-size:clamp(40px,6vw,28px);line-height:1;margin:12px 0 18px}
 .project-hero p{color:var(--muted);line-height:1.9;font-size:17px}
 .project-cover{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
 .project-cover img{width:100%;height:auto}
